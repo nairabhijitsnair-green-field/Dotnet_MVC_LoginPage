@@ -1,0 +1,105 @@
+﻿@model Modified_Login.Model.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+<style>
+    :root {
+        --emerald-blue: #0d9488; /* Primary Emerald Blue */
+        --dark-emerald: #064e3b; /* Darker accent */
+        --soft-bg: #f0fdfa;    /* Very light teal background */
+    }
+
+    body {
+        background: linear-gradient(135deg, #0f172a 0%, #0d9488 100%);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+    }
+
+    .register-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .register-card h2 {
+        color: var(--dark-emerald);
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-control {
+        border: 2px solid #e2e8f0;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+        border-color: var(--emerald-blue);
+        box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+        outline: none;
+    }
+
+    .btn-register {
+        background-color: var(--emerald-blue);
+        color: white;
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-top: 1rem;
+    }
+
+    .btn-register:hover {
+        background-color: var(--dark-emerald);
+    }
+
+    .text-danger {
+        font-size: 0.8rem;
+        color: #dc2626;
+    }
+</style>
+
+<div class="register-card">
+    <h2>Create Account</h2>
+
+    <form asp-action="Register" method="post">
+        <div class="form-group">
+            <input asp-for="Username" placeholder="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Email" type="email" placeholder="Email Address" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input asp-for="Password" type="password" placeholder="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn-register">Register Now</button>
+    </form>
+
+    <div style="text-align: center; margin-top: 1rem;">
+        <small style="color: #64748b;">Already have an account? <a href="/Login" style="color: var(--emerald-blue); text-decoration: none;">Login</a></small>
+    </div>
+</div>
